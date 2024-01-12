@@ -8,11 +8,17 @@ const ListItem = ({ item, itemAnimation }) => {
   const [itemText, setItemText] = useState(item.title);
   const inputRef = useRef(null);
 
-  const handleRemove = () => {
+  const handleRemove = async () => {
+    await fetch(`https://jsonplaceholder.typicode.com/todos/${item.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     const newListData = listData.filter((data) => data.id !== item.id);
     setListData(newListData);
   };
-
+  
   const updateTextAPI = async (itemId, Text) => {
     const resp = await fetch(`https://jsonplaceholder.typicode.com/todos/${itemId}`, {
       method: 'PATCH',

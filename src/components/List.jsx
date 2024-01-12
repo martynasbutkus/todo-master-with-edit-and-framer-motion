@@ -10,7 +10,7 @@ const List = () => {
   useEffect(() => {
     setTimeout(() => {
       setRenderList(true);
-    }, 1);
+    }, 100);
   }, []);
 
   const listAnimation = {
